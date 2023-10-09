@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.App{
+/* height: 100%; */
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*::-webkit-scrollbar{
+width: 0.5rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+*::-webkit-scrollbar-track{
+    /* background:; */
+    margin-right: 0.2rem; 
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+*::-webkit-scrollbar-thumb{
+    background: #EBDEF0;
+    border-radius: 50px;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
-
-.App-link {
-  color: #61dafb;
+*::-webkit-scrollbar-thumb:hover{
+    /* background: #AAB7B8; */
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home{
+    /* height: 100%; */
+    display: flex;
+    /* overflow: auto; */
+    justify-content: center;
+    align-items: center ;
+text-align: center;
+}
+.imagehome{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imagehome img{
+    height: 100px;
+    /* width: max-content; */
+    background-position: center;
+    object-fit: contain;
+}
+.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.login{
+    height: 100vh;
+    width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        justify-content: center;
+        align-items: center;
+}
+.signUp{
+    height: 100vh;
+    width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+}
+.error{
+    display: flex;
+    flex-direction: column;
+    /* gap: 2rem; */
+    justify-content: center;
+    align-items: center;
+}
+.popUp{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }
