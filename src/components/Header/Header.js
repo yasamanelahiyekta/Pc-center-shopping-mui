@@ -1,28 +1,28 @@
-import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { AppBar, Avatar, Badge, Box, IconButton, InputBase, Menu, MenuItem, TextField, Toolbar, Typography } from '@mui/material'
-
-
 import React, { useEffect, useState } from 'react'
-import { AccountCircle, LogoutRounded } from '@mui/icons-material';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { AccountCircle } from '@mui/icons-material';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { dorender } from '../../redux/action';
-import { ToastContainer, toast } from 'react-toastify';
-import { search } from "../../redux/action"
+import { ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import { clearcartnumber } from '../../redux/action';
 
-const Header = ({ search, setsearch }) => {
+const Header = ({ flagg, setsearch }) => {
     const [flag, setFlag] = useState(false)
+    const cartnumber = JSON.parse(localStorage.getItem("cartnumber"))?.length
     const { pathname } = useLocation()
     console.log(pathname, "location");
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const profile = JSON.parse(localStorage.getItem("profile-image"))
+    useEffect(() => {
+    }, [flagg])
     const token = JSON.parse(localStorage.getItem("token"))
     const email = JSON.parse(localStorage.getItem("email"))
     const avatar = JSON.parse(localStorage.getItem("avatar"))
@@ -140,7 +140,7 @@ const Header = ({ search, setsearch }) => {
         >
             <MenuItem>
                 <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={ 4 } color="error">
+                    <Badge badgeContent={ cartnumber } color="error">
                         <ShoppingCartOutlinedIcon />
                     </Badge>
                 </IconButton>
@@ -169,6 +169,7 @@ const Header = ({ search, setsearch }) => {
                                         'success'
                                     )
                                     localStorage.clear();
+                                    dispatch(clearcartnumber());
                                     setFlag(l => !l)
 
                                 }
@@ -226,8 +227,8 @@ const Header = ({ search, setsearch }) => {
                     </Box>
                     <Box sx={ { flexGrow: 1 } } />
                     <Box sx={ { display: { xs: 'none', md: 'flex' } } }>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={ 4 } color="error">
+                        <IconButton size="large" aria-label="show 4 new mails" color="inherit" onClick={ () => navigate("/cart") }>
+                            <Badge badgeContent={ cartnumber } color="error">
                                 <ShoppingCartOutlinedIcon />
                             </Badge>
                         </IconButton>
@@ -255,6 +256,7 @@ const Header = ({ search, setsearch }) => {
                                                     'success'
                                                 )
                                                 localStorage.clear();
+                                                dispatch(clearcartnumber());
                                                 setFlag(l => !l)
 
                                             }
@@ -262,17 +264,20 @@ const Header = ({ search, setsearch }) => {
                                     } } /> }
                             </Badge>
                         </IconButton>
-                        <IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={ menuId }
-                            aria-haspopup="true"
-                            onClick={ handleProfileMenuOpen }
-                            color="inherit"
-                        >
-                            { !token ? <AccountCircle /> : <Avatar alt="Remy Sharp" src={ `${avatar}` } /> }
-                        </IconButton>
+                        { token &&
+                            <IconButton
+                                size="large"
+                                edge="end"
+                                aria-label="account of current user"
+                                aria-controls={ menuId }
+                                aria-haspopup="true"
+                                onClick={ handleProfileMenuOpen }
+                                color="inherit"
+                            >
+                                {/* { !token ? "" : profile ? <Avatar alt='Remy Sharp ' src={ `${profile}` } /> : <Avatar alt="Remy Sharp" src={ `${avatar}` } /> } */ }
+                                { profile ? <Avatar alt='Remy Sharp ' src={ `${profile}` } /> : token && <Avatar alt="Remy Sharp" src={ `${avatar}` } /> }
+                            </IconButton>
+                        }
                     </Box>
                     <Box sx={ { display: { xs: 'flex', md: 'none' } } }>
                         <IconButton

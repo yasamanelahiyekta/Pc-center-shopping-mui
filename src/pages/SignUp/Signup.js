@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signup } from '../../redux/action';
 import Header from "../../components/Header/Header";
+import Swal from 'sweetalert2';
 
 
 const Signup = () => {
@@ -66,8 +67,16 @@ const Signup = () => {
                     color='secondary'
                     onChange={ (e) => setDetails(l => [l[0], l[1], l[2], e.target.value]) } />
                 <Button color="secondary" onClick={ () => {
-                    dispatch(signup(details));
-                    navigate("/signup/Signuppopup")
+                    if (details[0] && details[1] && details[2] && details[3]) {
+                        dispatch(signup(details));
+                        navigate("/signup/Signuppopup")
+                    } else {
+                        Swal.fire(
+                            'error!',
+                            'please , compelete the fields!',
+                            'error'
+                        )
+                    }
                 } }>Sign up</Button>
                 <Typography variant="caption">do you have an account?<Typography variant="caption" color="#B02DC0"
                     style={ { cursor: "pointer" } }

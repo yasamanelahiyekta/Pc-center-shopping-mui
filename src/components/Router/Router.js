@@ -12,6 +12,11 @@ import Orders from '../../pages/Orders/Orders'
 import Changepassword from '../../pages/Setting/ChangePassword/Changepassword'
 import Changeprofile from '../../pages/Setting/ChangeProfile/Changeprofile'
 import Uploadavatar from '../../pages/Setting/UploadAvatar/Uploadavatar'
+import Cart from '../../pages/Cart/Cart'
+import Address from '../../pages/Address/Address'
+import Checkout from '../../pages/Checkout/Checkout'
+import Checkoutpopup from '../../pages/Checkout/Checkoutpopup/Checkoutpopup'
+import Oneorder from '../../pages/Oneorder/Oneorder'
 const Router = () => {
     return (
         <Routes>
@@ -22,12 +27,20 @@ const Router = () => {
             <Route path="/login/Loginpopup" element={ <Loginpopup /> } />
             <Route path="/signup" element={ <Signup /> } />
             <Route path="/profile" element={ <Profile /> } />
-            <Route path="/setting" element={ <Setting /> } />
-            <Route path="/setting/Changeprofile" element={ <Changeprofile /> } />
-            <Route path="/setting/chanhepassword" element={ <Changepassword /> } />
-            <Route path="/setting/UploadAvatar" element={ <Uploadavatar /> } />
-            {/* </Route> */ }
+            <Route path="/setting" element={ <Setting /> } >
+                <Route path="Changeprofile" element={ <Changeprofile /> } />
+                <Route path="chanhepassword" element={ <Changepassword /> } />
+                <Route path="UploadAvatar" element={ <Uploadavatar /> } />
+            </Route>
             <Route path="/orders" element={ <Orders /> } />
+            <Route path="/orders/:itemId" element={ <Oneorder /> } />
+            <Route path="/cart" element={ <Cart /> } />
+            <Route path="/address" element={ <Address /> } />
+            <Route path="/checkout"   >
+                <Route index element={ <Checkout /> } />
+                <Route path="submit" element={ <Checkoutpopup /> } />
+            </Route>
+            <Route path={ "*" } element={ <p>error</p> } />
         </Routes>
     )
 }

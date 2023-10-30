@@ -5,15 +5,18 @@ import { Outlet, useNavigate } from 'react-router-dom'
 
 const Setting = () => {
     const navigate = useNavigate()
+
     return (
         <>
             <Header />
-            <div className='h-screen flex flex-column gap-16 justify-center items-start' >
-                <Typography OnClick={ () => navigate("/setting/Changeprofile") } > Change and Edit Profile</Typography>
-                <Typography OnClick={ () => navigate("/setting/chanhepassword") } > Change Password</Typography>
-                <Typography OnClick={ () => navigate("/setting/UploadAvatar") } > Upload Avatar</Typography>
+            <div className='flex gap-x-96 items-center'>
+                <div className='h-screen flex flex-column gap-16 justify-center items-start ml-2' >
+                    <Typography onClick={ () => navigate("Changeprofile") } > Change and Edit Profile</Typography>
+                    <Typography onClick={ () => navigate("chanhepassword") } > Change Password</Typography>
+                    <Typography onClick={ () => navigate("UploadAvatar") } > Upload Avatar</Typography>
+                </div>
+                <Outlet />
             </div>
-            <Outlet />
         </>
     )
 }

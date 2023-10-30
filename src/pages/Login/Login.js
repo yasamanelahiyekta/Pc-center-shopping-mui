@@ -52,8 +52,16 @@ const Login = () => {
                 <FormHelperText id="filled-adornment-password" >your email must be at least 5 character</FormHelperText>
             </FormControl>
             <Button color="secondary" onClick={ () => {
-                dispatch(login(inform));
-                navigate("/login/Loginpopup");
+                if (inform[0] && inform[1]) {
+                    dispatch(login(inform));
+                    navigate("/login/Loginpopup");
+                } else {
+                    Swal.fire(
+                        'error!',
+                        'please , compelete the fields!',
+                        'error'
+                    )
+                }
             } } >Login</Button>
             { !data.success ? <Typography variant="caption">you don't have an account?<Typography variant="caption" color="#B02DC0"
                 style={ { cursor: "pointer" } }

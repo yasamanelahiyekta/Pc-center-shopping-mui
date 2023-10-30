@@ -82,7 +82,8 @@ const Home = () => {
                             return <Grid item key={ item._id } className="m-4"  >
                                 <Card sx={ { minWidth: 345, maxWidth: 345 } } variant="outlined"
                                     onClick={ () => {
-                                        navigate(`${item._id}`)
+                                        navigate(`${item._id}`);
+
                                     }
                                     }
                                     style={ { backgroundColor: !item.countInStock && "gray", borderColor: !item.countInStock && "red" } } >
