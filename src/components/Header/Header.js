@@ -17,15 +17,18 @@ const Header = ({ flagg, setsearch }) => {
     const [flag, setFlag] = useState(false)
     const cartnumber = JSON.parse(localStorage.getItem("cartnumber"))?.length
     const { pathname } = useLocation()
-    console.log(pathname, "location");
+    const sel = useSelector(s => s.flagavatar)
+    console.log(sel, "sel");
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const profile = JSON.parse(localStorage.getItem("profile-image"))
     useEffect(() => {
-    }, [flagg])
+    }, [flagg, sel])
     const token = JSON.parse(localStorage.getItem("token"))
     const email = JSON.parse(localStorage.getItem("email"))
     const avatar = JSON.parse(localStorage.getItem("avatar"))
+    const user = JSON.parse(localStorage.getItem("user"))
+    console.log(user.user.image);
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -275,7 +278,7 @@ const Header = ({ flagg, setsearch }) => {
                                 color="inherit"
                             >
                                 {/* { !token ? "" : profile ? <Avatar alt='Remy Sharp ' src={ `${profile}` } /> : <Avatar alt="Remy Sharp" src={ `${avatar}` } /> } */ }
-                                { profile ? <Avatar alt='Remy Sharp ' src={ `${profile}` } /> : token && <Avatar alt="Remy Sharp" src={ `${avatar}` } /> }
+                                { user?.user.image ? <Avatar alt='Remy Sharp ' src={ `${user?.user.image}` } /> : profile ? <Avatar alt='Remy Sharp ' src={ `${profile}` } /> : token && <Avatar alt="Remy Sharp" src={ `${avatar}` } /> }
                             </IconButton>
                         }
                     </Box>

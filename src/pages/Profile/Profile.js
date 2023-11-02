@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Header from '../../components/Header/Header'
-import { Typography } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { getprofile } from '../../redux/action';
 
@@ -16,43 +16,47 @@ const Profile = () => {
     console.log(user);
     return (
         <>
-            <Header />
-            <div className='h-screen flex flex-col justify-evenly items-center'>
-                <div className='w-24'><img src={ `${user?.image}` } alt='user image' /></div>
-                <div className='flex justify-center items-center gap-2'>
-                    <Typography>Email :</Typography>
-                    <Typography>{ user?.email }</Typography>
-                </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <Typography>User Name: :</Typography>
-                    <Typography>{ user?.username }</Typography>
-                </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <Typography>Mobile :</Typography>
-                    <Typography>{ user?.mobile }</Typography>
-                </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <Typography>First Name :</Typography>
-                    <Typography>{ user?.firstname }</Typography>
-                </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <Typography>Last Name :</Typography>
-                    <Typography>{ user?.lastname }</Typography>
-                </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <Typography>Gender :</Typography>
-                    <Typography>{ user?.gender }</Typography>
-                </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <Typography>Age :</Typography>
-                    <Typography>{ user?.age }</Typography>
-                </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <Typography>Ciyt :</Typography>
-                    <Typography>{ user?.city }</Typography>
-                </div>
+            <Header />{ loading ? (<div className='loading' >
+                <CircularProgress color="secondary" />
+            </div>) : error ? (<div className='popUp'>
+                <Typography variant='h1' color="red">error</Typography>
+            </div>) :
+                <div className='h-screen flex flex-col justify-evenly items-center'>
+                    <div className='w-24'><img src={ `${user?.image}` } alt='user image' /></div>
+                    <div className='flex justify-center items-center gap-2'>
+                        <Typography>Email :</Typography>
+                        <Typography>{ user?.email }</Typography>
+                    </div>
+                    <div className='flex justify-center items-center gap-2'>
+                        <Typography>User Name: :</Typography>
+                        <Typography>{ user?.username }</Typography>
+                    </div>
+                    <div className='flex justify-center items-center gap-2'>
+                        <Typography>Mobile :</Typography>
+                        <Typography>{ user?.mobile }</Typography>
+                    </div>
+                    <div className='flex justify-center items-center gap-2'>
+                        <Typography>First Name :</Typography>
+                        <Typography>{ user?.firstname }</Typography>
+                    </div>
+                    <div className='flex justify-center items-center gap-2'>
+                        <Typography>Last Name :</Typography>
+                        <Typography>{ user?.lastname }</Typography>
+                    </div>
+                    <div className='flex justify-center items-center gap-2'>
+                        <Typography>Gender :</Typography>
+                        <Typography>{ user?.gender }</Typography>
+                    </div>
+                    <div className='flex justify-center items-center gap-2'>
+                        <Typography>Age :</Typography>
+                        <Typography>{ user?.age }</Typography>
+                    </div>
+                    <div className='flex justify-center items-center gap-2'>
+                        <Typography>Ciyt :</Typography>
+                        <Typography>{ user?.city }</Typography>
+                    </div>
 
-            </div>
+                </div> }
         </>
     )
 }

@@ -1,34 +1,35 @@
-import { TextField } from '@mui/material'
+import { Button, TextField } from '@mui/material'
 import React, { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getavatar } from '../../../redux/action'
+import { flagavatar, getavatar } from '../../../redux/action'
 
 const Uploadavatar = () => {
     const [flag, setFlag] = useState(false)
     const token = JSON.parse(localStorage.getItem("token"))
+    const [pic, setPic] = useState("")
     const ref = useRef()
     const formdata = new FormData()
+    formdata.append("profile-image", pic)
     console.log(formdata);
     const dispatch = useDispatch()
     console.log("hiii");
     return (
-        <form ref={ ref } className='flex justify-center items-center ml-6'>
+        <form ref={ ref } className='flex justify-center flex-col gap-3 items-center ml-6'>
             <TextField
 
                 onChange={ (e) => {
-                    localStorage.setItem("profile-image", JSON.stringify(e.target.value));
-                    setFlag(l => !l)
-                } }
-                onBlur={ () => {
-
-                    setFlag(l => !l);
-                    dispatch(getavatar(token, formdata))
+                    setPic(e.target.files[0]);
+                    console.log(e.target.files[0]);
                 } }
                 id="outlined-file-input"
                 // label="file"
                 type="file"
                 color='secondary'
             />
+            <Button onClick={ () => {
+                dispatch(getavatar(token, formdata));
+                dispatch(flagavatar())
+            } } variant='text' color='secondary' >Change Avatar</Button>
         </form>
     )
 }

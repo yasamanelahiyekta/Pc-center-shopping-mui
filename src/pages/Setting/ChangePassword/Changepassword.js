@@ -54,7 +54,7 @@ const Changepassword = () => {
                         <OutlinedInput
                             error={ pass[0] !== pass[1] }
                             // id="outlined-adornment-password"
-                            onBlur={ (e) => setPass(l => [l[0], e.target.value.trim(), l[2]]) }
+                            onChange={ (e) => setPass(l => [l[0], e.target.value.trim(), l[2]]) }
                             type={ showPassword[1] ? 'text' : 'password' }
                             endAdornment={
                                 <InputAdornment position="end">
@@ -106,7 +106,7 @@ const Changepassword = () => {
             <Button onClick={ () => {
                 dispatch(changepassword(token, pass[0], pass[2]));
                 console.log("change");
-            } } >changepassword</Button>
+            } } >change password</Button>
         </div>
     )
 }

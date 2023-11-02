@@ -184,10 +184,10 @@ export const changepassword = (token, passo, passn) => async (dispatch) => {
         )
         const newData = JSON.parse(JSON.stringify(data))
         dispatch({ type: "changepassword", payload: { data: newData, loading: false, error: "" } })
-        console.log(data);
+        console.log(data, "data");
     } catch (error) {
         dispatch({ type: "changepassword", payload: { data: [], loading: false, error: error } })
-        console.log(error);
+        console.log(error, "error");
     }
 }
 export const totalprice = (data) => (dispatch, getstate) => {
@@ -266,4 +266,9 @@ export const oneorder = (token, id) => async (dispatch, getstate) => {
         dispatch({ type: "1order", payload: { data: [], loading: false, error: error } })
         console.log(error);
     }
+}
+export const flagavatar = () => (dispatch, getstate) => {
+
+    dispatch({ type: "flagavatar", payload: !getstate().flagavatar })
+    console.log(getstate().flagavatar);
 }

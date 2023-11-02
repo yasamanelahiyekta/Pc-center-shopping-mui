@@ -73,7 +73,11 @@ const Home = () => {
                     </Grid>
 
                 </>
-            ) : error ? (<p>{ error }</p>) :
+            ) : error ? (<div className="h-screen flex flex-col justify-center items-center gap-4">
+                <Typography>
+                    { error }
+                </Typography>
+            </div>) :
                 (<>
                     <Grid container className="home">
                         { data.filter(item => item.name.toLowerCase().includes(search.trim().toLowerCase()) ||

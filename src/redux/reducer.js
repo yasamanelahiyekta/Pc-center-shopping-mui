@@ -136,3 +136,11 @@ export const oneorder = (state = { data: [], loading: false, error: "" }, { type
             return state;
     }
 }
+export const flagavatar = (state = { data: false }, { type, payload }) => {
+    switch (type) {
+        case "flagavatar":
+            return payload;
+        default:
+            return state;
+    }
+}

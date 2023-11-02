@@ -74,7 +74,7 @@ const Cart = () => {
                                 <TableBody>
 
                                     { Object.entries(help).map(([key, value]) => {
-                                        return (<>
+                                        return (
                                             <TableRow
                                                 key={ uuidv4() }
                                                 sx={ { '&:last-child td, &:last-child th': { border: 0 } } }
@@ -145,7 +145,7 @@ const Cart = () => {
                                                 }
                                                 /></TableCell>
                                             </TableRow >
-                                        </>)
+                                        )
                                     }
                                     ) }
 
