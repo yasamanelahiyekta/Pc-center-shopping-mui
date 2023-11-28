@@ -23,7 +23,7 @@ const Footer = () => {
                     </div>
                     <div className='text-left'>
                         <Typography><GitHubIcon /> pcshope</Typography>
-                        <Typography><TelegramIcon /> @Pc-shopw</Typography>
+                        <Typography><TelegramIcon /> @Pc-shope</Typography>
                         <Typography>< InstagramIcon /> Pc-shope</Typography>
                     </div>
                 </div>
