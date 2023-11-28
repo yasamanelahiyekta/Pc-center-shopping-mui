@@ -15,7 +15,7 @@ const Orders = () => {
     useEffect(() => {
         dispatch(orders(token))
     }, [])
-    console.log(data);
+    console.log(error.response?.data.message, "error");
     return (
         <>
             <Header />
@@ -23,7 +23,10 @@ const Orders = () => {
                 { loading ? (<div className='loading' >
                     <CircularProgress color="secondary" />
                 </div>) : error ? (<div className='loading' >
-                    <Typography >error</Typography>
+                    { error.response?.data.message == "jwt expired" ? (<Typography >you're token is expired</Typography>) :
+                        error.response?.data.message == "The user hasn't submitted any orders" ? (<Typography >you never submit any orders</Typography>) :
+                            (<Typography >error</Typography>) }
+
                 </div>) : (
                     <>
                         <Grid container spacing={ 1 } className='mt-2 bg-fuchsia-600 bg-opacity-10 '>

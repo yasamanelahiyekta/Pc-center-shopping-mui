@@ -2,12 +2,12 @@ import { legacy_createStore as createStore, combineReducers, applyMiddleware } f
 import thunk from "redux-thunk";
 import {
     home, signup, login, search, changeprofile, oneproduct, cartnumber, creatCart, getprofile,
-    totalprice, changepassword, submit, orders, oneorder, flagavatar
+    totalprice, changepassword, submit, orders, oneorder, flagavatar, getavatar
 } from "./reducer"
 const reducers = combineReducers({
     home, signup, login, search, changeprofile, oneproduct,
     cartnumber, creatCart, getprofile, totalprice, changepassword, submit,
-    orders, oneorder, flagavatar
+    orders, oneorder, flagavatar, getavatar
 })
 const middleware = [thunk]
 const localHome = JSON.parse(localStorage.getItem("home")) || []

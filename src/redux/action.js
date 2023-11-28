@@ -121,6 +121,9 @@ export const changeprofile = (token, firstname, lastname, gender, age, city) => 
 
 
 }
+export const updatechangeprofile = () => (dispatch) => {
+    dispatch({ type: "changeprofile", payload: { data: [], loading: false, error: "" } })
+}
 export const addcartnumber = (item) => (dispatch, getstate) => {
     const newData = JSON.parse(JSON.stringify(getstate().cartnumber.data))
     newData.push(item)
@@ -151,6 +154,7 @@ export const deletecartnumber = (id) => (dispatch, getstate) => {
 }
 export const getavatar = (token, formData) => async (dispatch) => {
     try {
+        dispatch({ type: "getavatar", payload: { data: [], loading: true, error: "" } })
         const { data } = await axios.post(
             "http://kzico.runflare.run/user/profile-image",
             formData,
@@ -161,8 +165,11 @@ export const getavatar = (token, formData) => async (dispatch) => {
                 },
             }
         )
+        const newData = JSON.parse(JSON.stringify(data))
+        dispatch({ type: "getavatar", payload: { data: newData, loading: false, error: "" } })
         console.log(data);
     } catch (error) {
+        dispatch({ type: "getavatar", payload: { data: [], loading: false, error: error } })
         console.log(error);
     }
 }

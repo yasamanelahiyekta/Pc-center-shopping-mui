@@ -28,7 +28,7 @@ const Header = ({ flagg, setsearch }) => {
     const email = JSON.parse(localStorage.getItem("email"))
     const avatar = JSON.parse(localStorage.getItem("avatar"))
     const user = JSON.parse(localStorage.getItem("user"))
-    console.log(user.user.image);
+    // console.log(user.user.image);
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -173,7 +173,8 @@ const Header = ({ flagg, setsearch }) => {
                                     )
                                     localStorage.clear();
                                     dispatch(clearcartnumber());
-                                    setFlag(l => !l)
+                                    setFlag(l => !l);
+                                    navigate("/")
 
                                 }
                             });
@@ -241,7 +242,11 @@ const Header = ({ flagg, setsearch }) => {
                             color="inherit"
                         >
                             <Badge  >
-                                { !token ? <LoginRoundedIcon onClick={ () => navigate("/login") } /> :
+                                { !token ? (<abbr title='Login'>
+
+                                    <LoginRoundedIcon onClick={ () => navigate("/login") } />
+                                </abbr>
+                                ) :
                                     <LogoutRoundedIcon onClick={ () => {
                                         Swal.fire({
                                             title: 'Are you sure?',
@@ -260,7 +265,8 @@ const Header = ({ flagg, setsearch }) => {
                                                 )
                                                 localStorage.clear();
                                                 dispatch(clearcartnumber());
-                                                setFlag(l => !l)
+                                                setFlag(l => !l);
+                                                navigate("/")
 
                                             }
                                         });

@@ -24,7 +24,7 @@ const Loginpopup = () => {
                 <Typography variant='h1' color="red">Oops...</Typography>
                 <div className='flex flex-column justify-evenly items-center gap-2'>
                     <Typography>
-                        { error }
+                        { error?.data?.message }
                     </Typography>
                 </div>
                 <Button onClick={ () => {

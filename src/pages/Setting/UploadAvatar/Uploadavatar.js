@@ -1,7 +1,8 @@
 import { Button, TextField } from '@mui/material'
 import React, { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { flagavatar, getavatar } from '../../../redux/action'
+import { flagavatar, getavatar, getprofile } from '../../../redux/action'
+import { useNavigate } from 'react-router-dom'
 
 const Uploadavatar = () => {
     const [flag, setFlag] = useState(false)
@@ -9,6 +10,7 @@ const Uploadavatar = () => {
     const [pic, setPic] = useState("")
     const ref = useRef()
     const formdata = new FormData()
+    const navigate = useNavigate()
     formdata.append("profile-image", pic)
     console.log(formdata);
     const dispatch = useDispatch()
@@ -28,7 +30,9 @@ const Uploadavatar = () => {
             />
             <Button onClick={ () => {
                 dispatch(getavatar(token, formdata));
-                dispatch(flagavatar())
+                dispatch(getprofile(token));
+                dispatch(flagavatar());
+                navigate("/Uploadavatartpopup")
             } } variant='text' color='secondary' >Change Avatar</Button>
         </form>
     )

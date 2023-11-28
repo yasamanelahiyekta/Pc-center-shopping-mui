@@ -1,3 +1,4 @@
+
 export const home = (state = { data: [], loading: false, error: "" }, { type, payload }) => {
     switch (type) {
         case "home":
@@ -131,6 +132,14 @@ export const orders = (state = { data: [], loading: false, error: "" }, { type, 
 export const oneorder = (state = { data: [], loading: false, error: "" }, { type, payload }) => {
     switch (type) {
         case "1order":
+            return payload;
+        default:
+            return state;
+    }
+}
+export const getavatar = (state = { data: [], loading: false, error: "" }, { type, payload }) => {
+    switch (type) {
+        case "getavatar":
             return payload;
         default:
             return state;

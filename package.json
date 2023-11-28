@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.1",
     "bootstrap": "^5.3.2",
+    "codepen": "^1.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-bootstrap": "^2.9.0",
     "react-dom": "^17.0.0 || ^18.0.0",

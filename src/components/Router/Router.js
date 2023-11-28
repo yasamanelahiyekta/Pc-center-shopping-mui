@@ -17,6 +17,9 @@ import Address from '../../pages/Address/Address'
 import Checkout from '../../pages/Checkout/Checkout'
 import Checkoutpopup from '../../pages/Checkout/Checkoutpopup/Checkoutpopup'
 import Oneorder from '../../pages/Oneorder/Oneorder'
+import Uploadavatartpopup from '../../pages/Setting/UploadAvatar/Uploadavatartpopup'
+import Changepasswordpopup from '../../pages/Setting/ChangePassword/Changepasswordpopup'
+
 const Router = () => {
     return (
         <Routes>
@@ -25,6 +28,9 @@ const Router = () => {
             <Route path="/login" element={ <Login /> } />
             <Route path="/signup/Signuppopup" element={ <Signuppopup /> } />
             <Route path="/login/Loginpopup" element={ <Loginpopup /> } />
+            <Route path="/Uploadavatartpopup" element={ <Uploadavatartpopup /> } />
+            <Route path="/Changepasswordpopup" element={ <Changepasswordpopup /> } />
+
             <Route path="/signup" element={ <Signup /> } />
             <Route path="/profile" element={ <Profile /> } />
             <Route path="/setting" element={ <Setting /> } >
