@@ -4,6 +4,10 @@
 .App{
 /* height: 100%; */
 }
+.setting{
+    background-image: url("./images/bgimage.png");
+    background-size: cover;
+}
 *::-webkit-scrollbar{
 width: 0.5rem;
 }

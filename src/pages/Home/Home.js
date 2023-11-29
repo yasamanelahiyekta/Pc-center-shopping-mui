@@ -85,6 +85,7 @@ const Home = () => {
                         ).map(item => {
                             return <Grid item key={ item._id } className="m-4"  >
                                 <Card sx={ { minWidth: 345, maxWidth: 345 } } variant="outlined"
+                                    className="cursor-pointer"
                                     onClick={ () => {
                                         navigate(`${item._id}`);
 

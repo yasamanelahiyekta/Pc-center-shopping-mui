@@ -26,16 +26,16 @@ function Checkoutpopup() {
 
     }, [])
     return (
-        <div>{ loading ? (<div className='loading' >
+        <div className='bg-violet-200'>{ loading ? (<div className='loading' >
             <CircularProgress color="secondary" />
         </div>) : error ?
             <div className='h-screen flex flex-col justify-center items-center gap-4'>
-                <Badge>{ error.message }</Badge>
+                <Badge>somthing went wrong,try again!!😶</Badge>
                 <Button onClick={ () => navigate("/address") } >OK</Button>
             </div>
-            : <div className='h-screen flex flex-col justify-center items-center gap-4'>
-                <Typography variant="caption" color="purple"></Typography>
-                <Button onClick={ () => navigate("/") }>done</Button>
+            : <div className='h-screen flex flex-col justify-center items-center gap-5'>
+                <Typography variant="h3" color="purple" className='animate-bounce'>order is submitted 😃</Typography>
+                <Button color='secondary' size='large' onClick={ () => navigate("/") }>done</Button>
             </div> }</div>
     )
 }

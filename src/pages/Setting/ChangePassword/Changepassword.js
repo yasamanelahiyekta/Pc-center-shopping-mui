@@ -1,5 +1,5 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Box, Button, FormControl, FormHelperText, IconButton, InputLabel, OutlinedInput, TextField } from '@mui/material'
+import { Box, Button, FormControl, FormHelperText, IconButton, InputLabel, OutlinedInput, TextField, Typography } from '@mui/material'
 import InputAdornment from '@mui/material/InputAdornment';
 
 import React, { useRef, useState } from 'react'
@@ -19,7 +19,10 @@ const Changepassword = () => {
         event.preventDefault();
     };
     return (
-        <div className=' flex justify-center items-center ml-20 flex-column'>
+        <div className=' flex justify-center gap-4 items-center  flex-column'>
+            <div className='animate-pulse text-purple-950 mb-8'>
+                <Typography variant='h5'>Change Password</Typography>
+            </div>
             <Box
                 component="form"
                 autoComplete='off'
@@ -57,7 +60,7 @@ const Changepassword = () => {
                     >
                         <InputLabel htmlFor="outlined-adornment-password">Current Password</InputLabel>
                         <OutlinedInput
-                            error={ typeof (pass[0]) !== typeof (pass[1]) }
+                            error={ pass[0] !== pass[1] }
                             // id="outlined-adornment-password"
                             onChange={ (e) => setPass(l => [l[0], e.target.value.trim(), l[2]]) }
                             type={ showPassword[1] ? 'text' : 'password' }
@@ -85,7 +88,7 @@ const Changepassword = () => {
                     >
                         <InputLabel htmlFor="outlined-adornment-password">New Password</InputLabel>
                         <OutlinedInput
-                            error={ typeof (pass[2]) === typeof (pass[1]) && typeof (pass[2]) }
+                            error={ pass[2] === pass[1] && pass[2] }
                             // id="outlined-adornment-password"
                             onChange={ (e) => setPass(l => [l[0], l[1], e.target.value.trim()]) }
                             type={ showPassword[2] ? 'text' : 'password' }
@@ -111,20 +114,22 @@ const Changepassword = () => {
                 </div>
 
             </Box>
-            <Button color='secondary' onClick={ () => {
-                if (pass[0] && pass[1] && pass[2]) {
-                    dispatch(changepassword(token, pass[0], pass[2]));
-                    console.log("change");
-                    navigate("/Changepasswordpopup")
-                } else {
-                    Swal.fire(
-                        'error!',
-                        'please , compelete the fields!',
-                        'error'
-                    )
-                }
+            <Button color='secondary'
+                disabled={ pass[0] !== pass[1] || pass[2] == pass[1] && pass[2] }
+                onClick={ () => {
+                    if (pass[0] && pass[1] && pass[2]) {
+                        dispatch(changepassword(token, pass[0], pass[2]));
+                        console.log("change");
+                        navigate("/Changepasswordpopup")
+                    } else {
+                        Swal.fire(
+                            'error!',
+                            'please , compelete the fields!',
+                            'error'
+                        )
+                    }
 
-            } } >change password</Button>
+                } } >change password</Button>
         </div>
     )
 }

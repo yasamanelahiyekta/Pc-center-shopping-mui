@@ -203,6 +203,7 @@ const Header = ({ flagg, setsearch }) => {
                 <Toolbar>
                     <Typography
                         variant="h6"
+                        className='cursor-pointer'
                         noWrap
                         component="div"
                         sx={ { display: { xs: 'none', sm: 'block' } } }
@@ -218,7 +219,7 @@ const Header = ({ flagg, setsearch }) => {
                             navigate("/")
                         } }
                     ><HomeOutlinedIcon fontSize='small' /></Typography>
-                    { !token ? "" : <Typography variant='body2' style={ { marginLeft: "0.5rem" } }>{ email }</Typography> }
+                    { !token ? "" : <Typography className='cursor-default' variant='body2' style={ { marginLeft: "0.5rem" } }>{ email }</Typography> }
 
 
                     <Box className="ml-2">

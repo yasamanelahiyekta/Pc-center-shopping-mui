@@ -24,7 +24,10 @@ const Changeprofile = () => {
     console.log(data.success);
     return (
         <>
-            <div className=' flex flex-col justify-evenly items-center ml-36 gap-2'>
+            <div className=' flex flex-col justify-evenly items-center  gap-2'>
+                <div className='animate-pulse mb-4 text-purple-950 '>
+                    <Typography variant='h5'>Change and Edit profile</Typography>
+                </div>
                 { loading ? <div className='loading' >
                     <CircularProgress color="secondary" />
                 </div> : error ? (
